@@ -51,7 +51,7 @@ o Continuous Integration, Continuous Delivery i Continuous Deployment.
   $ source .venv/Source/activate
   ```
 
-- Integracja z TravisCI:
+- Integracja z CircleCI:
 
   ```
   # miejsce na twoje notatki
