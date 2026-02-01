@@ -1,13 +1,18 @@
-version: 2.1 
-jobs: 
-  build-and-test:  
-    machine: 
-      image: ubuntu-2004:current 
-    steps: 
-      - checkout 
-      - run: make deps 
-      - run: make test       
-workflows: 
-  basic:  
-    jobs: 
-      - build-and-test 
+version: 2.1
+
+jobs:
+  build-and-test:
+    docker:
+      - image: cimg/python:3.11
+    steps:
+      - checkout
+      - run: python -m venv .venv
+      - run: . .venv/bin/activate && python -m pip install --upgrade pip
+      - run: . .venv/bin/activate && make deps
+      - run: . .venv/bin/activate && make test
+
+workflows:
+  basic:
+    jobs:
+      - build-and-test
+      
