@@ -1,5 +1,4 @@
-from flask import Flask
-from . import views  # noqa
+from .views import app  # noqa
 
 
-app = Flask(__name__)
+

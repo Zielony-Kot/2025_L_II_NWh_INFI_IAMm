@@ -10,13 +10,23 @@ o Continuous Integration, Continuous Delivery i Continuous Deployment.
   $ python -m venv .venv
 
   # aktywowanie hermetycznego środowiska
-  $ source .venv/Source/activate
+  $ source .venv/Scripts/activate
   $ pip install -r requirements.txt
   $ pip install -r test_requirements.txt
 
   # zobacz
   $ pip list
   ```
+  ## Makefile
+
+Projekt zawiera plik Makefile upraszczający pracę z projektem:
+
+```bash
+make deps   # instalacja zależności
+make lint   # uruchomienie flake8
+make test   # uruchomienie testów
+make run    # uruchomienie aplikacji
+
 
   Sprawdź: [tutorial venv](https://docs.python.org/3/tutorial/venv.html) oraz [biblioteki flask](http://flask.pocoo.org).
 

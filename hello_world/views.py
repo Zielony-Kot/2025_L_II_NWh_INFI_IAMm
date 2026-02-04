@@ -1,4 +1,8 @@
-from hello_world import app
+from flask import Flask, request
+from hello_world.formater import get_formatted, SUPPORTED, PLAIN
+
+app = Flask(__name__)
+
 from hello_world.formater import get_formatted
 from hello_world.formater import SUPPORTED, PLAIN
 from flask import request
