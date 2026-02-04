@@ -1,14 +1,14 @@
-.PHONY: deps lint test run docker_build docker_run docker_push
+.PHONY: deps lint test run docker_build docker_run
 
 deps:
 	pip install -r requirements.txt
 	pip install -r test_requirements.txt
 
 lint:
-	flake8 hello_world test
+	PYTHONPATH=. flake8 hello_world test
 
 test:
-	pytest
+	PYTHONPATH=. pytest
 
 run:
 	python main.py
