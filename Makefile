@@ -1,4 +1,5 @@
-.PHONY: deps lint test run docker_build docker_run
+.PHONY: deps lint test run docker_build docker_run docker_push
+
 
 deps:
 	pip install -r requirements.txt
@@ -13,6 +14,10 @@ test:
 run:
 	python main.py
 
+
+USERNAME ?= zielonykot
+TAG=docker.io/$(USERNAME)/hello-world-printer
+
 docker_build:
 	docker build -t hello-world-printer .
 
@@ -22,6 +27,9 @@ docker_run: docker_build
 		-p 5000:5000 \
 		-d hello-world-printer
 
-docker_push:
-	@echo "docker push hello-world-printer"
+docker_push: docker_build
+	@docker login --username $(USERNAME) --password $${DOCKER_PASSWORD}; \
+	docker tag hello-world-printer $(TAG); \
+	docker push $(TAG); \
+	docker logout
 
