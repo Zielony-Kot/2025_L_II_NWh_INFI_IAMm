@@ -3,17 +3,34 @@ version: 2.1
 jobs:
   build-and-test:
     machine:
-      image: ubuntu-2004:current
+      image: ubuntu-2204:2024.01.2
 
     steps:
       - checkout
-      - run: make deps
-      - run: make lint
-      - run: make test
+
+      - run:
+          name: Install dependencies
+          command: make deps
+
+      - run:
+          name: Run linter
+          command: make lint
+
+      - run:
+          name: Run tests
+          command: make test
+
+      - run:
+          name: Build Docker image
+          command: make docker_build
+
+      - run:
+          name: Push Docker image
+          command: make docker_push
 
 workflows:
   basic:
     jobs:
       - build-and-test
 
-      
+
