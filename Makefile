@@ -5,10 +5,10 @@ deps:
 	pip install -r test_requirements.txt
 
 lint:
-	flake8 hello_world test
+	PYTHONPATH=. flake8 hello_world test
 
 test:
-	pytest
+	PYTHONPATH=. pytest
 
 run:
 	python main.py
